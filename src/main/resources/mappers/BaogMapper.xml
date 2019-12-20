@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xr.springboot.dao.BaogMapper">
+  <resultMap id="BaseResultMap" type="com.xr.springboot.model.Baog">
+    <constructor>
+      <idArg column="xid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="dai" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="xname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="jie" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="dan" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="can" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="xiao" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="text" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="quji" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="texts" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    xid, dai, xname, jie, dan, can, xiao, text, quji, texts
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_baog
+    where xid = #{xid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_baog
+    where xid = #{xid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xr.springboot.model.Baog">
+    insert into t_baog (xid, dai, xname, 
+      jie, dan, can, xiao, 
+      text, quji, texts)
+    values (#{xid,jdbcType=INTEGER}, #{dai,jdbcType=VARCHAR}, #{xname,jdbcType=VARCHAR}, 
+      #{jie,jdbcType=VARCHAR}, #{dan,jdbcType=VARCHAR}, #{can,jdbcType=VARCHAR}, #{xiao,jdbcType=VARCHAR}, 
+      #{text,jdbcType=VARCHAR}, #{quji,jdbcType=VARCHAR}, #{texts,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xr.springboot.model.Baog">
+    insert into t_baog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xid != null">
+        xid,
+      </if>
+      <if test="dai != null">
+        dai,
+      </if>
+      <if test="xname != null">
+        xname,
+      </if>
+      <if test="jie != null">
+        jie,
+      </if>
+      <if test="dan != null">
+        dan,
+      </if>
+      <if test="can != null">
+        can,
+      </if>
+      <if test="xiao != null">
+        xiao,
+      </if>
+      <if test="text != null">
+        text,
+      </if>
+      <if test="quji != null">
+        quji,
+      </if>
+      <if test="texts != null">
+        texts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xid != null">
+        #{xid,jdbcType=INTEGER},
+      </if>
+      <if test="dai != null">
+        #{dai,jdbcType=VARCHAR},
+      </if>
+      <if test="xname != null">
+        #{xname,jdbcType=VARCHAR},
+      </if>
+      <if test="jie != null">
+        #{jie,jdbcType=VARCHAR},
+      </if>
+      <if test="dan != null">
+        #{dan,jdbcType=VARCHAR},
+      </if>
+      <if test="can != null">
+        #{can,jdbcType=VARCHAR},
+      </if>
+      <if test="xiao != null">
+        #{xiao,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="quji != null">
+        #{quji,jdbcType=VARCHAR},
+      </if>
+      <if test="texts != null">
+        #{texts,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xr.springboot.model.Baog">
+    update t_baog
+    <set>
+      <if test="dai != null">
+        dai = #{dai,jdbcType=VARCHAR},
+      </if>
+      <if test="xname != null">
+        xname = #{xname,jdbcType=VARCHAR},
+      </if>
+      <if test="jie != null">
+        jie = #{jie,jdbcType=VARCHAR},
+      </if>
+      <if test="dan != null">
+        dan = #{dan,jdbcType=VARCHAR},
+      </if>
+      <if test="can != null">
+        can = #{can,jdbcType=VARCHAR},
+      </if>
+      <if test="xiao != null">
+        xiao = #{xiao,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null">
+        text = #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="quji != null">
+        quji = #{quji,jdbcType=VARCHAR},
+      </if>
+      <if test="texts != null">
+        texts = #{texts,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where xid = #{xid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xr.springboot.model.Baog">
+    update t_baog
+    set dai = #{dai,jdbcType=VARCHAR},
+      xname = #{xname,jdbcType=VARCHAR},
+      jie = #{jie,jdbcType=VARCHAR},
+      dan = #{dan,jdbcType=VARCHAR},
+      can = #{can,jdbcType=VARCHAR},
+      xiao = #{xiao,jdbcType=VARCHAR},
+      text = #{text,jdbcType=VARCHAR},
+      quji = #{quji,jdbcType=VARCHAR},
+      texts = #{texts,jdbcType=VARCHAR}
+    where xid = #{xid,jdbcType=INTEGER}
+  </update>
+</mapper>
